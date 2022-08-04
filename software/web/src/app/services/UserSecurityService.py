@@ -1,7 +1,7 @@
 import datetime
 
 from fastapi import Depends
-from jose import jwt
+from jose import jwt, JWTError
 
 from repositories.UserRepository import UserRepository
 
@@ -10,7 +10,7 @@ from passlib.context import CryptContext
 from configs import security as security_config
 
 
-class UsersSecurityService:
+class UserSecurityService:
     user_repository: UserRepository
 
     def __init__(self, user_repository: UserRepository = Depends()) -> None:
@@ -24,12 +24,22 @@ class UsersSecurityService:
     def get_password_hash(self, password):
         return self.__pwd_context.hash(password)
 
-    def authenticate_user(self, username: str, password: str):
+    def authorizate_user(self, username: str, password: str):
         user = self.__user_repository.get_user_by_username(username)
         if not user:
             return False
         if not self.verify_password(password, user.hashed_password):
             return False
+        return user
+
+    def authenticate_user(self, access_token: str, token_type: str):
+        try:
+            payload = jwt.decode(access_token, security_config.SECRET_KEY, algorithms=[security_config.ALGORITHM])
+            username: str = payload.get("sub")
+        except JWTError:
+            return None
+
+        user = self.__user_repository.get_user_by_username(username)
         return user
 
     @staticmethod

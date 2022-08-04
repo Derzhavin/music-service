@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 
 from configs.Environment import get_environment_variables
-from models.domain.BaseModel import init
+from models.domain.BaseModel import init_db
 from routes.index import IndexRouter
 from routes.v1.auth import AuthRouter
+from routes.v1.private import PrivateRouter
 
 
 def create_app():
@@ -15,8 +16,9 @@ def create_app():
     )
     app.include_router(IndexRouter)
     app.include_router(AuthRouter)
+    app.include_router(PrivateRouter)
 
-    init()
+    init_db()
 
     return app
 

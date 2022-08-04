@@ -1,4 +1,5 @@
-from models.domain.BaseModel import EntityMeta
+from app.models.domain.BaseModel import EntityMeta
+
 from sqlalchemy import (
     Column,
     Integer,
@@ -12,6 +13,6 @@ class UserModel(EntityMeta):
 
     id = Column(Integer)
     name = Column(String(50), nullable=False)
-    password = Column(String(256), nullable=False)
+    hashed_password = Column(String(256), nullable=False)
 
     PrimaryKeyConstraint(id)
