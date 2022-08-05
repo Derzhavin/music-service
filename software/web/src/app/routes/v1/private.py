@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
-from .auth import get_current_user
+from .security import get_current_user
 
-PrivateRouter = APIRouter(prefix='/private')
+PrivateRouter = APIRouter(prefix='/v1/users')
 
 
-@PrivateRouter.get("/")
+@PrivateRouter.get("/private", tags=['users'])
 async def private(username: str = Depends(get_current_user)):
     return username

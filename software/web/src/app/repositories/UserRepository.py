@@ -20,8 +20,13 @@ class UserRepository:
         self.db.commit()
 
     def get_user_by_username(self, username: str):
-        user = self.db.query(UserModel).filter(UserModel.name == username).first()
+        user = self.db.query(UserModel).filter(UserModel.username == username).first()
 
         if not user:
             return None
         return user
+
+    def is_username_exists(self, username: str):
+        q = self.db.query(UserModel).filter(UserModel.username == username)
+        res = self.db.query(q.exists()).scalar()
+        return res
