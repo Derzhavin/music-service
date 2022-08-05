@@ -27,7 +27,7 @@ class UserSecurityService:
             return False
         try:
             hashed_password = self.__pwd_context.hash(password)
-            user = UserModel(name=username, hashed_password=hashed_password)
+            user = UserModel(username=username, hashed_password=hashed_password)
             self.__user_repository.create(user)
         except Exception as e:
             return False
