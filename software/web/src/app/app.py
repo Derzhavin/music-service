@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from configs.Environment import get_environment_variables
-from models.domain.BaseModel import init_db
-from routes.v1 import IndexRouter, PrivateRouter, SecurityRouter
+from .configs.Environment import get_environment_variables
+from .models.domain.BaseModel import init_db
+from .routes.v1 import IndexRouter, PrivateRouter, SecurityRouter
 
 
 def create_app():
