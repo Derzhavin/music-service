@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
-from models.view.user import UserIn
-from services import UserSecurityService
+from app.models.view.user import UserIn
+from app.services import UserSecurityService
 
 
 SecurityRouter = APIRouter(prefix='/v1/users')

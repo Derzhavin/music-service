@@ -4,9 +4,9 @@ from fastapi import Depends
 from jose import jwt, JWTError
 from passlib.context import CryptContext
 
-from models.domain.UserModel import UserModel
-from repositories.UserRepository import UserRepository
-from configs import security as security_config
+from app.models.domain.UserModel import UserModel
+from app.repositories.UserRepository import UserRepository
+from app.configs import security as security_config
 
 
 class UserSecurityService:
