@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from .configs.Environment import get_environment_variables
 from .models.domain.BaseModel import init_db
-from .routes.v1 import IndexRouter, PrivateRouter, SecurityRouter
+from .routes.v1 import IndexRouter, PrivateRouter, SecurityRouter, MusicTracksRouter
 
 
 def create_app():
@@ -15,6 +15,7 @@ def create_app():
     app.include_router(IndexRouter)
     app.include_router(PrivateRouter)
     app.include_router(SecurityRouter)
+    app.include_router(MusicTracksRouter)
 
     init_db()
 

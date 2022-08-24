@@ -11,7 +11,7 @@ class EnvironmentSettings(BaseSettings):
     DATABASE_PASSWORD: str = 'password'
     DATABASE_PORT: int = 5432
     DATABASE_USERNAME: str = 'musicservicedbadmin'
-    DEBUG_MODE: bool = False
+    DEBUG_MODE: bool = True
 
     class Config:
         env_file = ".env"

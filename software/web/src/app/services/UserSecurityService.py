@@ -10,7 +10,6 @@ from app.configs import security as security_config
 
 
 class UserSecurityService:
-    user_repository: UserRepository
 
     def __init__(self, user_repository: UserRepository = Depends()) -> None:
         self.__user_repository = user_repository

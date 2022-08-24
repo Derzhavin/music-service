@@ -17,6 +17,9 @@ if config.config_file_name is not None:
 # add your model's MetaData object here
 # for 'autogenerate' support
 from app.models.domain.BaseModel import EntityMeta
+from app.models.domain.GenreModel import GenreModel
+from app.models.domain.MusicTrackModel import MusicTrackModel
+from app.models.domain.MusicTracksFolderModel import MusicTracksFolderModel
 from app.models.domain.UserModel import UserModel
 
 target_metadata = EntityMeta.metadata
